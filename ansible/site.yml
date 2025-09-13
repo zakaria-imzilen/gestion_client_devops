@@ -1,0 +1,14 @@
+---
+- name: Bootstrap Docker on Dev VM
+  hosts: dev
+  become: true
+  gather_facts: true
+
+  pre_tasks:
+    # Ensure Python exists for Ansible modules (safe on Ubuntu)
+    - name: Ensure Python 3 present
+      raw: test -e /usr/bin/python3 || (apt-get update -y && apt-get install -y python3)
+      changed_when: false
+
+  roles:
+    - docker
