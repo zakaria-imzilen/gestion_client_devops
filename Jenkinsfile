@@ -11,7 +11,7 @@ pipeline {
     stage('Checkout') {
       agent any
       steps {
-        git branch: 'main', url: 'https://github.com/<your-repo>.git'
+        git branch: 'main', url: 'https://github.com/zakaria-imzilen/gestion_client_devops.git'
         script { env.COMMIT_SHA = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim() }
       }
     }
